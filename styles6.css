@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #500000, #000000);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #b30000, #ff0000);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.user-btn {
+    background: white;
+    color: rgb(158, 18, 18);
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.favorites-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.favorites-container h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.favorites-list {
+    margin-top: 20px;
+}
+
+.favorites-list h2 {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.favorite-items {
+    list-style: none;
+    padding: 0;
+}
+
+.favorite-items li {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    gap: 15px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.favorite-items li:hover {
+    transform: scale(1.05);
+}
+
+.favorite-items img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.favorite-items span {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+footer {
+    background: black;
+    padding: 20px;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.footer-content h3 {
+    color: red;
+}
+
+.footer-content p {
+    font-size: 14px;
+}

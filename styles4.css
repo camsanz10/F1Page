@@ -1,0 +1,211 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #500000, #000000);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #8B0000;
+}
+
+.user-btn {
+    background: white;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    padding: 30px;
+}
+
+.sidebar {
+    width: 250px;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    color: black;
+}
+
+.sidebar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px;
+    border-radius: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background: red;
+    color: white;
+}
+
+.info-container {
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    border-bottom: 2px solid red;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.view-profile {
+    background: white;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+.view-profile:hover {
+    background: lightgray;
+}
+
+.account-info, .social-info {
+    margin-bottom: 20px;
+}
+
+.account-info label, .social-info label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.account-info input, .social-info input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 20px;
+    border: none;
+}
+
+.verify {
+    margin-top: 10px;
+    background: red;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.verify:hover {
+    background: darkred;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons button {
+    background: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: background 0.3s;
+}
+
+.buttons button:hover {
+    background: darkred;
+}
+
+.clear {
+    background: gray;
+}
+
+.clear:hover {
+    background: darkgray;
+}
+
+.logout {
+    background: black;
+}
+
+.logout:hover {
+    background: darkgray;
+}
+
+footer {
+    background: black;
+    padding: 20px;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.footer-content h3 {
+    color: red;
+}
+
+.footer-content p {
+    font-size: 14px;
+}
