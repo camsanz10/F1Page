@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuitos</title>
+    <link rel="stylesheet" href="../css/styles2.css">
+</head>
+<body>
+
+<header class="main-header">
+    <nav>
+        <a href="user.html" class="user-btn" id="userGreeting">Hola, usuario</a>
+        <ul>
+            <li><a href="index2.html">Inicio</a></li>
+            <li><a href="pilotos.html">Pilotos</a></li>
+            <li><a href="#">Circuitos</a></li>
+            <li><a href="favoritos.html">Favoritos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="elements">
+        <div class="grid" id="circuitosGrid"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="left">
+            <h3>FORMULA1.CO</h3>
+            <p>Desde carreras legendarias hasta estadísticas de pilotos, explora el mundo de la Fórmula 1 a tu manera.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../js/circuitos.js"></script>
+<script src="../js/users.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const usuario = obtenerUsuarioActual();
+        if (usuario) {
+            const saludo = document.getElementById("userGreeting");
+            saludo.textContent = `Hola, ${usuario.nombre.split(" ")[0]}`;
+        }
+    });
+</script>
+
+</body>
+</html>

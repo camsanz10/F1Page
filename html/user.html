@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Usuario</title>
+    <link rel="stylesheet" href="../css/styles4.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="user-greeting">
+            <a href="user.html" class="user-btn" id="userGreeting">Hola, usuario</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index2.html">Inicio</a></li>
+                <li><a href="pilotos.html">Pilotos</a></li>
+                <li><a href="circuito.html">Circuitos</a></li>
+                <li><a href="favoritos.html">Favoritos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="user-info">
+        <aside class="sidebar">
+            <img id="fotoPerfil" src="../img/iconuser.png" alt="Foto de Perfil">
+            <ul>
+                <li><a href="user.html">Información personal</a></li>
+                <li><a href="#">Inicio de sesión y seguridad</a></li>
+                <li><a href="favoritos.html">Mis favoritos</a></li>
+                <li><a href="#">Mi correo electrónico</a></li>
+                <li class="active"><a href="contraseña.html">Cambiar contraseña</a></li>
+                <li><a href="#">Mi nombre</a></li>
+            </ul>
+        </aside>
+        
+
+        <section class="info-container">
+            <h1>Información Personal</h1>
+            <button class="view-profile">Ver Perfil</button>
+
+            <div class="account-info">
+        <label>Usuario</label>
+        <input id="input-nombre" type="text" value="" />
+
+        <label>NOMBRE REAL</label>
+        <input id="input-nombreReal" type="text" value="" />
+
+        <label>CELULAR</label>
+        <input id="input-telefono" type="text" value="" />
+
+        <label>CORREO</label>
+        <input id="input-email" type="email" value="" />
+
+        <label>DIRECCIÓN</label>
+        <input id="input-direccion" type="text" value="" />
+            </div>
+
+            <div class="social-info">
+                <h3>Social</h3>
+                <label>PÁGINA WEB</label>
+                <input type="text" placeholder="Sitio URL">
+            </div>
+
+            <div class="buttons">
+                <button class="update-profile">Actualizar</button>
+                <button class="clear">Borrar Todo</button>
+                <a href="login.html" class="logout-btn">
+                    <button class="logout">Cerrar Sesión</button>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="left">
+                <h3>FORMULA1.CO</h3>
+                <p>Desde carreras legendarias hasta estadísticas de pilotos, explora el mundo de la Fórmula 1 a tu manera, con tu pasión.</p>
+    </footer>
+
+<script src="../js/users.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const usuario = obtenerUsuarioActual();
+
+        if (!usuario) {
+            alert("No has iniciado sesión. Por favor, inicia sesión.");
+            window.location.href = "login.html";
+            return;
+        }
+
+        document.getElementById("input-nombre").value = usuario.nombre || "";
+        document.getElementById("input-nombreReal").value = usuario.nombre || "";
+        document.getElementById("input-telefono").value = usuario.telefono || "";
+        document.getElementById("input-email").value = usuario.email || "";
+        document.getElementById("input-direccion").value = usuario.direccion || "";
+    });
+
+    document.querySelector(".update-profile").addEventListener("click", () => {
+    const nuevosDatos = {
+        nombre: document.getElementById("input-nombre").value,
+        telefono: document.getElementById("input-telefono").value,
+        direccion: document.getElementById("input-direccion").value,
+        email: document.getElementById("input-email").value,
+    };
+    actualizarPerfil(nuevosDatos);
+    alert("Perfil actualizado!");
+});
+
+ document.addEventListener("DOMContentLoaded", () => {
+        const usuario = obtenerUsuarioActual();
+
+        if (usuario) {
+            const saludo = document.getElementById("userGreeting");
+            saludo.textContent = `Hola, ${usuario.nombre.split(" ")[0]}`;
+        }
+    });
+</script>
+
+</body>
+</html>

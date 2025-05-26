@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/styles1.css" />
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-box">
+            <img src="../img/formula-1-seeklogo.png" alt="F1 Logo" class="logo" />
+            <form id="form-login">
+                <input type="email" name="email" placeholder="Correo Electrónico" required />
+                <input type="password" name="password" placeholder="Contraseña" required />
+                <button type="submit" class="btn-primary">START YOUR ENGINES</button>
+            </form>
+            <p>¿No tienes una cuenta? <a href="registro.html">Regístrate</a></p>
+        </div>
+    </div>
+
+    <script src="../js/users.js"></script>
+    <script>
+        const formLogin = document.getElementById("form-login");
+        formLogin.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = e.target.email.value.trim();
+            const password = e.target.password.value.trim();
+
+            const logueado = loginUsuario(email, password);
+            if (logueado) {
+                alert("Bienvenido!");
+                window.location.href = "index2.html";
+            } else {
+                alert("Correo o contraseña incorrectos.");
+            }
+        });
+    </script>
+</body>
+</html>

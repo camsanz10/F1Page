@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('landingfoto.png'); 
+    background-image: url('../img/landingfoto.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;

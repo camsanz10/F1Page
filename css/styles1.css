@@ -20,7 +20,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('LoginBack.png') no-repeat center center/cover;
+    background: url('../img/LoginBack.png') no-repeat center center/cover;
 }
 
 .auth-container {

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Favoritos</title>
+    <link rel="stylesheet" href="../css/styles6.css">
+</head>
+<body>
+
+<header class="main-header">
+    <nav>
+        <a href="user.html" class="user-btn" id="userGreeting">Hola, usuario</a>
+        <ul>
+            <li><a href="index2.html">Inicio</a></li>
+            <li><a href="pilotos.html">Pilotos</a></li>
+            <li><a href="circuitos.html">Circuitos</a></li>
+            <li><a href="favoritos.html">Favoritos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="favorites-container">
+    <h1>Mis Favoritos</h1>
+
+    <section class="favorites-list">
+        <h2>🏎️ Pilotos Favoritos</h2>
+        <ul class="favorite-items" id="pilotosFavoritos"></ul>
+    </section>
+
+    <section class="favorites-list">
+        <h2>🏁 Circuitos Favoritos</h2>
+        <ul class="favorite-items" id="circuitosFavoritos"></ul>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="left">
+            <h3>FORMULA1.CO</h3>
+            <p>Desde carreras legendarias hasta estadísticas de pilotos, explora el mundo de la Fórmula 1 a tu manera.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function obtenerUsuarioActual() {
+        const nombre = localStorage.getItem("usuarioActual");
+        return nombre ? { nombre } : null;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const usuario = obtenerUsuarioActual();
+        const saludo = document.getElementById("userGreeting");
+
+        if (!usuario) {
+            saludo.textContent = "Hola, visitante";
+            alert("Debes iniciar sesión para ver tus favoritos.");
+            return;
+        }
+
+        saludo.textContent = `Hola, ${usuario.nombre}`;
+
+        const favoritos = JSON.parse(localStorage.getItem("favoritos")) || {};
+        const datosUsuario = favoritos[usuario.nombre] || { pilotos: [], circuitos: [] };
+
+        const contPilotos = document.getElementById("pilotosFavoritos");
+        const contCircuitos = document.getElementById("circuitosFavoritos");
+
+        datosUsuario.pilotos.forEach(p => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <a href="piloto1.html?id=${p.id}" class="fav-link">
+                    <img src="${p.imagen || '../img/default.png'}" alt="${p.nombre}">
+                    <span>${p.nombre}</span>
+                </a>
+                <button onclick="eliminarFavorito('${p.id}', 'pilotos')">❌</button>
+            `;
+            contPilotos.appendChild(li);
+        });
+
+        datosUsuario.circuitos.forEach(c => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <a href="circuito.html?id=${c.id}" class="fav-link">${c.nombre}</a>
+                <button onclick="eliminarFavorito('${c.id}', 'circuitos')">❌</button>
+            `;
+            contCircuitos.appendChild(li);
+        });
+    });
+
+    function eliminarFavorito(id, tipo) {
+        const usuario = obtenerUsuarioActual();
+        if (!usuario) return;
+
+        const favoritos = JSON.parse(localStorage.getItem("favoritos")) || {};
+        if (!favoritos[usuario.nombre]) return;
+
+        favoritos[usuario.nombre][tipo] = favoritos[usuario.nombre][tipo].filter(item => item.id !== id);
+
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+        const botones = document.querySelectorAll(`button[onclick*="${id}"]`);
+        botones.forEach(btn => {
+            if (btn.onclick.toString().includes(id)) {
+                btn.parentElement.remove();
+            }
+        });
+    }
+</script>
+
+<script src="../js/users.js"></script>
+
+</body>
+</html>

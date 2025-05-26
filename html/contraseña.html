@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información del Usuario</title>
-    <link rel="stylesheet" href="styles4.css">
+    <link rel="stylesheet" href="../css/styles5.css">
 </head>
 <body>
 
     <header class="main-header">
         <div class="user-greeting">
-            <button class="user-btn">Hola, Camila</button>
+            <a href="user.html" class="user-btn" id="userGreeting">Hola, usuario</a>
         </div>
         <nav>
             <ul>
                 <li><a href="index2.html">Inicio</a></li>
                 <li><a href="pilotos.html">Pilotos</a></li>
-                <li><a href="#">Circuitos</a></li>
+                <li><a href="circuitos.html">Circuitos</a></li>
                 <li><a href="favoritos.html">Favoritos</a></li>
             </ul>
         </nav>
@@ -24,7 +24,7 @@
 
     <main class="user-info">
         <aside class="sidebar">
-            <img src="mefoto.jpeg" alt="Foto de Perfil">
+            <img src="../img/iconuser.png" alt="Foto de Perfil">
             <ul>
                 <li><a href="user.html">Información personal</a></li>
                 <li><a href="#">Inicio de sesión y seguridad</a></li>
@@ -34,42 +34,21 @@
                 <li><a href="#">Mi nombre</a></li>
             </ul>
         </aside>
-        
 
         <section class="info-container">
-            <h1>Información Personal</h1>
-            <button class="view-profile">Ver Perfil</button>
+            <h1>Cambiar Contraseña</h1>
+            <form class="password-change-form">
+                <label>Contraseña actual</label>
+                <input type="password" placeholder="Ingresa tu contraseña actual" required>
 
-            <div class="account-info">
-                <label>Usuario</label>
-                <input type="text" value="camsanz">
+                <label>Nueva contraseña</label>
+                <input type="password" placeholder="Ingresa la nueva contraseña" required>
 
-                <label>NOMBRE REAL</label>
-                <input type="text" value="Camila Sánchez">
+                <label>Confirmar nueva contraseña</label>
+                <input type="password" placeholder="Confirma la nueva contraseña" required>
 
-                <label>CELULAR</label>
-                <input type="text" value="3103929233">
-
-                <label>CORREO</label>
-                <input type="email" value="camilasanchez@gmail.com">
-
-                <label>DIRECCIÓN</label>
-                <input type="text" value="123 Ave, Cali, Colombia">
-            </div>
-
-            <div class="social-info">
-                <h3>Social</h3>
-                <label>PÁGINA WEB</label>
-                <input type="text" placeholder="Sitio URL">
-            </div>
-
-            <div class="buttons">
-                <button class="update-profile">Actualizar</button>
-                <button class="clear">Borrar Todo</button>
-                <a href="login.html" class="logout-btn">
-                    <button class="logout">Cerrar Sesión</button>
-                </a>
-            </div>
+                <button type="submit" class="update-password">Actualizar contraseña</button>
+            </form>
         </section>
     </main>
 
@@ -78,7 +57,21 @@
             <div class="left">
                 <h3>FORMULA1.CO</h3>
                 <p>Desde carreras legendarias hasta estadísticas de pilotos, explora el mundo de la Fórmula 1 a tu manera, con tu pasión.</p>
+            </div>
+
     </footer>
+
+    <script src="../js/users.js"></script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const usuario = obtenerUsuarioActual();
+        if (usuario) {
+            const saludo = document.getElementById("userGreeting");
+            saludo.textContent = `Hola, ${usuario.nombre.split(" ")[0]}`;
+        }
+    });
+</script>
 
 </body>
 </html>

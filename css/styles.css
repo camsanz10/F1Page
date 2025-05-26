@@ -83,7 +83,7 @@ nav ul li a {
     justify-content: space-between;
     align-items: center;
     padding: 50px;
-    background-image: url('landingfoto.png'); 
+    background-image: url('../img/landingfoto.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;

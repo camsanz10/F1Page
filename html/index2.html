@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fórmula Uno</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header class="main-header">
         <nav>
-            <a href="user.html" class="user-btn">Hola, Camila</a>
+            <a href="user.html" class="user-btn" id="userGreeting">Hola, usuario</a>
             <ul>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="pilotos.html">Pilotos</a></li>
-                <li><a href="#">Circuitos</a></li>
+                <li><a href="circuitos.html">Circuitos</a></li>
                 <li><a href="favoritos.html">Favoritos</a></li>
             </ul>
         </nav>
@@ -30,28 +30,28 @@
             <button class="learn-more">Aprender más</button>
         </div>
         <div class="hero-image">
-            <img src="pilots.png" alt="F1 Drivers">
+            <img src="../img/pilots.png" alt="F1 Drivers">
         </div>
     </main>
     
     <section class="team-logos">
-        <img src="ferrari.png" alt="Ferrari">
-        <img src="redbull.png" alt="Red Bull">
-        <img src="mercedes.png" alt="Mercedes">
-        <img src="astonmartin.png" alt="Aston Martin">
-        <img src="alpine.png" alt="Alpine">
-        <img src="haas.png" alt="Haas">
-        <img src="mclaren.png" alt="McLaren">
-        <img src="stake.png" alt="Stake F1 Team">
-        <img src="racingbulls.png" alt="Racing Bulls">
-        <img src="williams.png" alt="williams">
+        <img src="../img/ferrari.png" alt="Ferrari">
+        <img src="../img/redbull.png" alt="Red Bull">
+        <img src="../img/mercedes.png" alt="Mercedes">
+        <img src="../img/astonmartin.png" alt="Aston Martin">
+        <img src="../img/alpine.png" alt="Alpine">
+        <img src="../img/haas.png" alt="Haas">
+        <img src="../img/mclaren.png" alt="McLaren">
+        <img src="../img/stake.png" alt="Stake F1 Team">
+        <img src="../img/racingbulls.png" alt="Racing Bulls">
+        <img src="../img/williams.png" alt="williams">
     </section>
 
     <section class="about-us">
         <h2>Quién Soy</h2>
         <div class="team">
             <div class="member">
-                <img src="mefoto.jpeg" alt="Miembro 1">
+                <img src="../img/mefoto.jpeg" alt="Miembro 1">
                 <h3>Camila Sánchez</h3>
                 <p>"Diseñadora gráfica y estudiante de Diseño de Medios Interactivos en la Universidad Icesi. Apasionada por la Fórmula 1 y el diseño digital, he creado esta plataforma para brindar una experiencia visual y funcional que facilite la exploración de temporadas, carreras, pilotos y equipos. Mi enfoque combina diseño intuitivo, usabilidad y tecnología para ofrecer una navegación fluida y atractiva para todos los aficionados al automovilismo."</p>
             </div>
@@ -61,13 +61,13 @@
     <section class="carousel">
         <h2>Media</h2>
         <div class="carousel-container">
-            <img src="imagen1.jpg" alt="Preview 1">
-            <img src="imagen2.jpg" alt="Preview 2">
-            <img src="imagen3.jpg" alt="Preview 3">
-            <img src="imagen4.jpg" alt="Preview 4">
-            <img src="imagen5.jpg" alt="Preview 5">
-            <img src="imagen6.jpg" alt="Preview 6">
-            <img src="imagen7.jpg" alt="Preview 7">
+            <img src="../img/imagen1.jpg" alt="Preview 1">
+            <img src="../img/imagen2.jpg" alt="Preview 2">
+            <img src="../img/imagen3.jpg" alt="Preview 3">
+            <img src="../img/imagen4.jpg" alt="Preview 4">
+            <img src="../img/imagen5.jpg" alt="Preview 5">
+            <img src="../img/imagen6.jpg" alt="Preview 6">
+            <img src="../img/imagen7.jpg" alt="Preview 7">
         </div>
     </section>
 
@@ -93,5 +93,18 @@
                 <h3>FORMULA1.CO</h3>
                 <p>Desde carreras legendarias hasta estadísticas de pilotos, explora el mundo de la Fórmula 1 a tu manera, con tu pasión.</p>
     </footer>
+
+    <script src="../js/users.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const usuario = obtenerUsuarioActual();
+
+        if (usuario) {
+            const saludo = document.getElementById("userGreeting");
+            saludo.textContent = `Hola, ${usuario.nombre.split(" ")[0]}`;
+        }
+    });
+</script>
+
 </body>
 </html>
