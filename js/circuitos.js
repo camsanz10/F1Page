@@ -1,32 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
     const grid = document.getElementById("circuitosGrid");
 
-    fetch("https://ergast.com/api/f1/2024/circuits.json")
-        .then(response => response.json())
-        .then(data => {
-            const circuitos = data.MRData.CircuitTable.Circuits;
+    const imagenesCircuitos = {
+        "bahrain": "bahrain.png",
+        "jeddah": "jeddah.png",
+        "melbourne": "melbourne.png",
+        "shanghai": "shanghai.png",
+        "suzuka": "suzuka.png",
+        "miami": "miami.png",
+        "imola": "imola.png",
+        "monaco": "monaco.png",
+        "montreal": "montreal.png",
+        "barcelona": "barcelona.png",
+        "red_bull_ring": "redbull.png",
+        "silverstone": "silverstone.png",
+        "hungaroring": "hungaroring.png",
+        "spa": "spa.png",
+        "zandvoort": "zandvoort.png",
+        "monza": "monza.png",
+        "baku": "baku.png",
+        "singapore": "singapore.png",
+        "cota": "cota.png",
+        "mexico_city": "mexico.png",
+        "interlagos": "interlagos.png",
+        "vegas": "vegas.png",
+        "losail": "losail.png",
+        "yas_marina": "yasmarina.png"
+    };
 
+    fetch("https://my-json-server.typicode.com/camsanz10/fakeapi/circuitos")
+        .then(response => response.json())
+        .then(circuitos => {
             circuitos.forEach(circuito => {
-                const nombre = circuito.circuitName;
-                const pais = circuito.Location.country;
-                const ciudad = circuito.Location.locality;
-                const id = circuito.circuitId;
+                const imagenArchivo = imagenesCircuitos[circuito.id] || "default-circuit.png";
 
                 const item = document.createElement("a");
                 item.classList.add("item");
-                item.href = `circuito.html?id=${id}`;
+                item.href = `circuito.html?id=${circuito.id}`;
                 item.innerHTML = `
-                    <h3>${nombre}</h3>
-                    <p>${ciudad}, ${pais}</p>
-                    <button class="favorite-btn" data-id="${id}" data-nombre="${nombre}">⭐ Agregar a Favoritos</button>
+                    <img src="../img/circuitos/${imagenArchivo}" alt="${circuito.nombre}" class="circuit-image">
+                    <h3>${circuito.nombre}</h3>
+                    <button class="favorite-btn" data-id="${circuito.id}" data-nombre="${circuito.nombre}" data-imagen="${imagenArchivo}">⭐ Agregar a Favoritos</button>
                 `;
-
                 grid.appendChild(item);
             });
 
+            // Lógica de favoritos
             grid.addEventListener("click", (e) => {
                 if (e.target.classList.contains("favorite-btn")) {
-                    e.preventDefault(); 
+                    e.preventDefault();
 
                     const usuario = obtenerUsuarioActual();
                     if (!usuario) {
@@ -37,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const btn = e.target;
                     const id = btn.dataset.id;
                     const nombre = btn.dataset.nombre;
+                    const imagen = btn.dataset.imagen;
 
                     const favoritos = JSON.parse(localStorage.getItem("favoritos")) || {};
                     if (!favoritos[usuario.nombre]) {
@@ -52,9 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     favoritos[usuario.nombre].circuitos.push({
                         id,
                         nombre,
-                        imagen: "../img/default.jpg"
+                        imagen: `../img/circuitos/${imagen}`
                     });
-
                     localStorage.setItem("favoritos", JSON.stringify(favoritos));
                     alert("Circuito agregado a favoritos.");
                 }

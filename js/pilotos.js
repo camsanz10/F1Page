@@ -6,62 +6,60 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const imagenesPilotos = {
-        "hamilton": "hamilton.png",
         "max_verstappen": "verstappen.png",
-        "leclerc": "leclerc.png",
-        "alonso": "fernando.png",
-        "perez": "perez.png",
-        "russell": "russell.png",
-        "sainz": "sainz.png",
-        "albon": "albon.png",
-        "norris": "norris.png",
-        "tsunoda": "tsunoda.png",
-        "bottas": "bottas.png",
-        "piastri": "piastri.png",
-        "bearman": "bearman.png",
-        "colapinto": "colapinto.png",
-        "doohan": "doohan.png",
-        "gasly": "gasly.png",
-        "ocon": "ocon.png",
-        "ricciardo": "ricciardo.png",
-        "stroll": "stroll.png",
-        "hulkenberg": "hulkenberg.png",
-        "sargeant": "sargeant.png",
-        "zhou": "zhou.png",
-        "lawson": "lawson.png",
-        "magnussen": "magnussen.png"
+        "lewis_hamilton": "hamilton.png",
+        "charles_leclerc": "leclerc.png",
+        "fernando_alonso": "fernando.png",
+        "sergio_perez": "perez.png",
+        "george_russell": "russell.png",
+        "carlos_sainz": "sainz.png",
+        "alexander_albon": "albon.png",
+        "lando_norris": "norris.png",
+        "yuki_tsunoda": "tsunoda.png",
+        "valtteri_bottas": "bottas.png",
+        "oscar_piastri": "piastri.png",
+        "oliver_bearman": "bearman.png",
+        "franco_colapinto": "colapinto.png",
+        "jack_doohan": "doohan.png",
+        "pierre_gasly": "gasly.png",
+        "esteban_ocon": "ocon.png",
+        "daniel_ricciardo": "ricciardo.png",
+        "lance_stroll": "stroll.png",
+        "nico_hulkenberg": "hulkenberg.png",
+        "logan_sargeant": "sargeant.png",
+        "zhou_guanyu": "zhou.png",
+        "liam_lawson": "lawson.png",
+        "kevin_magnussen": "magnussen.png"
     };
 
-    fetch("https://ergast.com/api/f1/2024/drivers.json")
-        .then(response => response.json())
-        .then(data => {
-            const drivers = data.MRData.DriverTable.Drivers;
+    fetch("https://my-json-server.typicode.com/camsanz10/f1-fakeapi/drivers-details")
+    .then(response => response.json())
+    .then(drivers => {
+        drivers.forEach(driver => {
+            const fullName = driver.nombre;
+            const nationality = driver.nacionalidad;
+            const driverId = driver.id;
 
-            drivers.forEach(driver => {
-                const fullName = `${driver.givenName} ${driver.familyName}`;
-                const nationality = driver.nationality;
-                const driverId = driver.driverId;
+            const imageName = imagenesPilotos[driverId] || "default.png";
 
-                const imageName = imagenesPilotos[driverId] || "default.png";
+            const item = document.createElement("a");
+            item.classList.add("item");
+            item.href = `piloto1.html?id=${driverId}`;
 
-                const item = document.createElement("a");
-                item.classList.add("item");
-                item.href = `piloto1.html?id=${driverId}`;
+            item.innerHTML = `
+                <img src="../img/${imageName}" alt="${fullName}" onerror="this.src='../img/default.png'">
+                <h3>${fullName}</h3>
+                <p>Nacionalidad: ${nationality}</p>
+                <button class="favorite-btn" 
+                    data-id="${driverId}" 
+                    data-nombre="${fullName}" 
+                    data-imagen="../img/${imageName}">
+                    ⭐ Agregar a Favoritos
+                </button>
+            `;
 
-                item.innerHTML = `
-                    <img src="../img/${imageName}" alt="${fullName}" onerror="this.src='../img/default.png'">
-                    <h3>${fullName}</h3>
-                    <p>Nacionalidad: ${nationality}</p>
-                    <button class="favorite-btn" 
-                        data-id="${driverId}" 
-                        data-nombre="${fullName}" 
-                        data-imagen="../img/${imageName}">
-                        ⭐ Agregar a Favoritos
-                    </button>
-                `;
-
-                grid.appendChild(item);
-            });
+            grid.appendChild(item);
+        });
 
             grid.addEventListener("click", (e) => {
                 if (e.target.classList.contains("favorite-btn")) {

@@ -1,24 +1,24 @@
 body {
-    font-family: Arial, sans-serif;
-    background-image: url('../img/landingfoto.png'); 
-    background-size: cover; 
-    background-position: center; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../img/landingfoto.png');
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 20px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 50px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.96);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 .back-link {
@@ -28,62 +28,87 @@ body {
 
 .back-link a {
     text-decoration: none;
-    color: #feffff;
+    color: #ffffff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
 }
 
-.pilot-image {
-    flex: 1;
+.back-link a:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.pilot-image img,
+.circuit-img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+.pilot-info,
+.circuit-info {
     text-align: center;
-}
-
-.pilot-image img {
-    width: 80%;
-    border-radius: 10px;
-}
-
-.circuit-image img {
-    width: 90%; 
-    max-width: 900px; 
-    height: auto; 
-    display: block;
-    margin: 0 auto; 
-    border-radius: 10px; 
-}
-
-.pilot-info {
-    flex: 1.5;
     padding: 20px;
 }
 
-.pilot-info h1 {
-    font-size: 28px;
-    color: #2b3a3a;
+.pilot-info h1,
+.circuit-info h1 {
+    font-size: 32px;
+    color: #1e2b2b;
+    margin-bottom: 16px;
 }
 
-.pilot-info p {
-    font-size: 16px;
-    color: #4d5c5c;
+.pilot-info p,
+.circuit-info p {
+    font-size: 18px;
+    color: #3e4c4c;
     line-height: 1.6;
+    margin: 10px 0;
 }
 
 .details {
     font-weight: bold;
-    color: #2b3a3a;
+    color: #1e2b2b;
 }
 
 .add-to-favorites {
     background-color: #b21919;
     color: white;
-    padding: 12px 20px;
+    padding: 14px 28px;
     border: none;
     font-size: 16px;
-    border-radius: 20px;
+    border-radius: 30px;
     cursor: pointer;
-    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
 .add-to-favorites:hover {
-    background-color: #1e2b2b;
+    background-color: #2b3a3a;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .pilot-info,
+    .circuit-info {
+        flex: 1;
+        text-align: left;
+        padding-left: 30px;
+    }
+
+    .pilot-image,
+    .circuit-img {
+        flex: 1;
+        padding-right: 30px;
+    }
 }
